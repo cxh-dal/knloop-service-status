@@ -2,7 +2,7 @@ name: Service Status Check
 
 on:
   schedule:
-    - cron: "*/25 * * * *"
+    - cron: "*/5 * * * *"
 
   # 添加手动触发事件
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: page
+          ref: main
 
       - name: Run Shell Script
         id: shell_script_run
@@ -39,4 +39,4 @@ jobs:
           git config --local user.email 'Actions@knloop.com'
           git add -A --force ./logs/
           git commit -m '🆙 [Automated] Update service status logs'
-          git push origin page
+          git push origin main
